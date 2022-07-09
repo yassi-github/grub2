@@ -460,7 +460,7 @@ grub_error_load (const struct grub_error_saved *save)
 }
 
 static inline void
-grub_ip_uint_to_string(const char *buff, const grub_uint32_t ip)
+grub_ip_uint_to_string(char *buff, const grub_uint32_t ip)
 {
   grub_snprintf (buff, 16, "%d.%d.%d.%d",
 		 ip >> (0 * 8) & 0xFF,

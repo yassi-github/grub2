@@ -381,10 +381,10 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
 
     pxe_mode = pxe->mode;
 
-    struct grub_net_bootp_packet * dhcp_ack    =  &pxe_mode->dhcp_ack;
-    struct grub_net_bootp_packet * proxy_offer =  &pxe_mode->proxy_offer;
+    struct grub_net_bootp_packet * dhcp_ack    =  (struct grub_net_bootp_packet *)&pxe_mode->dhcp_ack;
+    struct grub_net_bootp_packet * proxy_offer =  (struct grub_net_bootp_packet *)&pxe_mode->proxy_offer;
 
-    const char server_ip_buff[16];
+    char server_ip_buff[16];
 
     grub_ip_uint_to_string(server_ip_buff, dhcp_ack->server_ip);
     if (grub_strncmp(server_ip_buff, "0.0.0.0", 16) == 0) {
